@@ -34,9 +34,11 @@ function showSlide(index) {
     // Met à jour le texte
     tagLine.innerHTML = slide.tagLine;
 
-    // Met à jour les dots
-    dots.forEach(dot => dot.classList.remove("dot_selected"));
-    dots[index].classList.add("dot_selected");
+	for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("dot_selected");  // retirer à tous
+    }
+
+    dots[index].classList.add("dot_selected");      // ajouter au bon
 }
 
 // Afficher la première slide au chargement
@@ -61,9 +63,10 @@ arrowLeft.addEventListener("click", () => {
 
     showSlide(currentIndex);
 });
-dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-        currentIndex = index;
+
+for (let i = 0; i < dots.length; i++) {
+    dots[i].addEventListener("click", function() {
+        currentIndex = i;
         showSlide(currentIndex);
     });
-});
+}
